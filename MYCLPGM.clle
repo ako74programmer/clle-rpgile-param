@@ -1,0 +1,17 @@
+PGM
+    /* Deklaracja zmiennych */
+    DCL VAR(&P1) TYPE(*CHAR) LEN(10) VALUE('HELLO    ') /* Tekst */
+    DCL VAR(&P2CHAR) TYPE(*CHAR) LEN(7) VALUE('123.45') /* Liczba jako tekst */
+    DCL VAR(&P2DEC) TYPE(*DEC) LEN(7 2) /* Liczba dziesiętna */
+    DCL VAR(&P3CHAR) TYPE(*CHAR) LEN(10) VALUE('2024-11-20') /* Data jako tekst */
+    DCL VAR(&P3DATE) TYPE(*CHAR) LEN(10) /* Data w formacie YYYY-MM-DD */
+
+    /* Konwersja Param2: Tekst -> DEC */
+    CHGVAR VAR(&P2DEC) VALUE(&P2CHAR)
+
+    /* Konwersja Param3: Tekst -> CHAR (Data w formacie YYYY-MM-DD) */
+    CHGVAR VAR(&P3DATE) VALUE(&P3CHAR)
+
+    /* Wywołanie programu RPGLE */
+    CALL PGM(MYRPGPGM) PARM(&P1 &P2DEC &P3DATE)
+ENDPGM
